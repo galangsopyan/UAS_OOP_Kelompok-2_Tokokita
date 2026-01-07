@@ -70,7 +70,7 @@ def about():
         {"nama": "ADE TEGUH ARDIANSYAH ", "nim": "312410014", "peran": "Backend Developer"},
         {"nama": "MUHAMMAD RIZKI", "nim": "312410039", "peran": "UI/UX Designer"},
         {"nama": "FAKHRUL MUDZAKKIR SHIDDIQ", "nim": "312410041", "peran": "Dokumentasi"},
-        {"nama": "FASYAL MUHAMMAD", "nim": "312410023", "peran": "UI/UX Designer"},
+        {"nama": "FASYAL MUHAMMAD", "nim": "312410023", "peran": "Dokumentasi"},
     ]
     return render_template('about.html', anggota=kelompok)
 
