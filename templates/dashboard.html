@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="mb-4">
+    <h2 class="fw-bold"><i class="fas fa-tachometer-alt me-2 text-primary"></i>Analisis Data Produk</h2>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-white-50">Total Produk</h6>
+                <h2 class="fw-bold">{{ total }}</h2>
+                <i class="fas fa-box fa-2x position-absolute top-50 end-0 translate-middle-y me-3 opacity-25"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-white-50">Harga Rata-rata</h6>
+                <h2 class="fw-bold">${{ avg }}</h2>
+                <i class="fas fa-dollar-sign fa-2x position-absolute top-50 end-0 translate-middle-y me-3 opacity-25"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-black-50">Produk Termahal</h6>
+                <h5 class="fw-bold mb-0">${{ mahal.price }}</h5>
+                <small class="text-truncate d-block">{{ mahal.title }}</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-danger text-white shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-white-50">Produk Termurah</h6>
+                <h5 class="fw-bold mb-0">${{ murah.price }}</h5>
+                <small class="text-truncate d-block">{{ murah.title }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 p-4">
+            <h5 class="fw-bold mb-4">Distribusi Kategori</h5>
+            <table class="table">
+                <thead class="table-light">
+                    <tr>
+                        <th>Kategori</th>
+                        <th class="text-center">Jumlah Produk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cat, count in kategori_stats.items() %}
+                    <tr>
+                        <td class="text-capitalize">{{ cat }}</td>
+                        <td class="text-center"><span class="badge bg-info text-dark">{{ count }} Item</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
