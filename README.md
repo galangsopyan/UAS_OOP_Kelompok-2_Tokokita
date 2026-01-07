@@ -5,9 +5,9 @@ Aplikasi web berbasis Flask yang mengintegrasikan data dari API publik untuk men
 ## 👥 Tim Pengembang
 | Nama | NIM | Peran |
 | :--- | :--- | :--- |
-| **Galang Sopyan** | 312410001 | Frontend Developer |
-| **Teguh Ardiansyah** | 312410002 | Backend Developer |
-| **Muhammad Rizki** | 312410003 | UI/UX Desainer |
+| **Galang Sopyan** | 312410046 | Frontend Developer |
+| **Teguh Ardiansyah** | 312410014 | Backend Developer |
+| **Muhammad Rizki** | 312410039 | UI/UX Desainer |
 | **Fakhrul Mudzakkir Shiddiq** | 312410041 | Dokumentasi |
 | **Fasyal Muhammad** | 312410023 | Dokumentasi |
        
@@ -28,3 +28,4 @@ Aplikasi web berbasis Flask yang mengintegrasikan data dari API publik untuk men
 1. Clone repositori ini:
    ```bash
    git clone [https://github.com/galangsopyan/UAS_OOP_2026.git](https://github.com/galangsopyan/UAS_OOP_2026.git)
+
