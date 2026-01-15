@@ -1,21 +1,20 @@
-{% extends "layout.html" %}
-
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 <div class="text-center mb-5">
-    <h1 class="display-4 fw-bold">Project Kelompok 2</h1>
-    <p class="lead">UAS Pemrograman Orientasi Objek - Teknik Informatika 2026</p>
+  <h1 class="display-4 fw-bold">Project Kelompok 2</h1>
+  <p class="lead">UAS Pemrograman Orientasi Objek - Teknik Informatika 2026</p>
 </div>
 
 <div class="row g-4 justify-content-center">
-    {% for a in anggota %}
-    <div class="col-md-3">
-        <div class="card text-center shadow-sm p-4">
-            <i class="fas fa-user-circle fa-4x text-secondary mb-3"></i>
-            <h5 class="fw-bold mb-0">{{ a.nama }}</h5>
-            <p class="text-primary small mb-2">{{ a.nim }}</p>
-            <span class="badge bg-dark">{{ a.peran }}</span>
-        </div>
+  {% for a in anggota %}
+  <div class="col-6 col-md-4">
+    <div class="card text-center shadow-sm p-4 d-flex justify-content-center mb-3">
+      <!-- Gambar anggota -->
+      <img src="{{ url_for('static', filename='images/' ~ a.foto) }}" alt="{{ a.nama }}" class="img-fluid d-block mx-auto" style="max-height: 100%; object-fit: cover; width: 100px; height: 100px; border-radius: 50%" />
+
+      <h5 class="fw-bold mb-0">{{ a.nama }}</h5>
+      <p class="text badge bg-dark">{{ a.nim }}</p>
     </div>
-    {% endfor %}
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}

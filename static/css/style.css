@@ -1,0 +1,384 @@
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f8f9fa;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+  transform: translateY(-8px);
+}
+
+.top-bar {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.navbar {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  transition: all 0.3s ease;
+}
+.navbar-brand {
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #4cc9f0 !important;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+.navbar .dropdown-toggle {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar .dropdown-toggle:hover {
+  color: #4cc9f0 !important;
+  transform: translateY(-2px);
+  display: block;
+}
+
+.navbar .dropdown-toggle.active {
+  color: #fff !important;
+  border-bottom: 2px solid #4cc9f0;
+}
+.navbar .dropdown:hover > .dropdown-menu {
+  display: block;
+  margin-top: 0;
+  animation: rotateMenu 500ms ease-in-out forwards;
+}
+
+/* --- Dropdown menu --- */
+.navbar .dropdown-menu {
+  background-color: #171e37;
+  border-radius: 8px;
+  padding: 0;
+  border: none;
+  min-width: 180px;
+  animation: rotateMenu 500ms ease-in-out forwards;
+  transform-origin: top;
+}
+
+/* Dropdown item */
+.navbar .dropdown-item {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 12px 16px;
+  transition: 0.3s;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #aceafd2f;
+  color: #4cc9f0;
+}
+
+@keyframes rotateMenu {
+  0% {
+    transform: rotateX(-90deg);
+  }
+  70% {
+    transform: rotateX(20deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar .dropdown-menu {
+    position: static !important;
+    animation: none;
+    box-shadow: none;
+  }
+}
+
+.nav-link {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+.nav-link:hover {
+  color: #4cc9f0 !important;
+  transform: translateY(-2px);
+}
+.nav-link.active {
+  color: #fff !important;
+  border-bottom: 2px solid #4cc9f0;
+}
+
+.nav-link-cart {
+  background-color: #4cc9f0;
+  color: #17213d !important;
+  transition: 0.3s;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 14px;
+  align-items: center;
+  border-radius: 20px;
+  outline: 2px solid #4cc9f0;
+  outline-offset: -1px;
+}
+.nav-link-cart:hover {
+  background-color: #17213d;
+  color: #4cc9f0 !important;
+  outline: 2px solid #4cc9f0;
+  outline-offset: 0px;
+}
+
+.nav-link-cart.active {
+  background-color: #17213d;
+  color: #fff !important;
+  outline: 2px solid #4cc9f0;
+  outline-offset: 0px;
+}
+
+@media (max-width: 768px) {
+  .nav-link-cart {
+    background-color: transparent;
+    color: #fff !important;
+    outline: transparent;
+  }
+}
+
+.navbar-toggler {
+  border: transparent !important;
+}
+.search-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 20px;
+}
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  box-shadow: none;
+  border-color: #4cc9f0;
+}
+
+.btn-all {
+  padding: 10px;
+  color: #0d6efd !important;
+  outline: 1px solid #0d6efd;
+  border-radius: 33px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.btn-all:hover {
+  padding: 10px;
+  color: #fff !important;
+  outline: 1px solid #0d6efd;
+  background-color: #0d6efd;
+  border-radius: 33px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 18px;
+}
+
+.btn-all-big {
+  padding: 24px;
+  font-size: 18px;
+  color: #0d6efd !important;
+  outline: 1px solid #0d6efd;
+  border-radius: 33px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-all-big:hover {
+  padding: 24px;
+  font-size: 19px;
+  color: #fff !important;
+  outline: 1px solid #0d6efd;
+  background-color: #0d6efd;
+  border-radius: 33px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s;
+}
+@media (max-width: 576px) {
+  /* 576px = breakpoint sm Bootstrap */
+  .card-body {
+    position: relative;
+    padding-bottom: 50px; /* beri ruang untuk tombol */
+  }
+
+  .btn-detail {
+    position: absolute;
+    bottom: 10px; /* jarak dari bawah kartu */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto; /* bisa diatur lebar tetap jika mau */
+  }
+}
+.btn-top {
+  padding: 3px;
+  font-size: 12px;
+  color: #4cc9f0 !important;
+  outline: 1px solid #4cc9f0;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn-top:hover {
+  padding: 3px;
+  font-size: 12px;
+  color: #17213d !important;
+  background-color: #4cc9f0;
+  outline: 1px solid #4cc9f0;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn-search {
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #4cc9f0;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-search:hover {
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #17213d;
+  color: #4cc9f0 !important;
+  outline: 2px solid #4cc9f0;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-cart {
+  background-color: #4cc9f0;
+  color: #17213d !important;
+  transition: 0.3s;
+  padding: 10px 25%;
+  border-radius: 33px;
+  align-items: center;
+}
+.btn-cart:hover {
+  background-color: #17213d;
+  color: #4cc9f0 !important;
+  border-radius: 13px;
+}
+
+.bg-info {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+}
+
+.banner-wrapper img {
+  max-height: 420px;
+  object-fit: cover;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 15px;
+  border: none;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.card-detail {
+  border-radius: 15px;
+  border: none;
+  transition: none;
+}
+
+.h4,
+h4 {
+  font-size: calc(1.275rem + 0.3vw);
+  background-color: #4cc9f0;
+  padding: 10px;
+  color: #17213d;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Mobile ≤ 768px */
+@media (max-width: 768px) {
+  table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr auto; /* kiri fleksibel (Kolom2), kanan tetap (Kolom1) */
+    grid-template-rows: auto auto; /* dua baris */
+    grid-template-areas:
+      "col2 col1"
+      "col4 col5"; /* baris kedua normal */
+    margin-bottom: 15px;
+    gap: 10px; /* jarak antar item */
+  }
+
+  table tbody tr td {
+    display: block;
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+
+    /* Truncate teks panjang */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Sembunyikan kolom 3 & 6 */
+  table tbody tr td:nth-child(3),
+  table tbody tr td:nth-child(6) {
+    display: none;
+  }
+
+  /* Assign posisi tiap td di grid */
+  table tbody tr td:nth-child(1) {
+    grid-area: col1;
+  } /* sekarang di kanan baris 1 */
+  table tbody tr td:nth-child(2) {
+    grid-area: col2;
+  } /* sekarang di kiri baris 1 */
+  table tbody tr td:nth-child(4) {
+    grid-area: col4;
+  } /* baris 2 kiri */
+  table tbody tr td:nth-child(5) {
+    grid-area: col5;
+  } /* baris 2 kanan */
+
+  /* Sembunyikan thead di mobile */
+  table thead {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  /* Override Bootstrap col */
+  .row.g-4 > .col-lg-4 {
+    flex: 0 0 33.3333%; /* 3 produk per baris */
+    max-width: 33.3333%;
+  }
+
+  /* Kecilkan ukuran kartu agar muat */
+  .row.g-4 > .col-lg-4 .card {
+    transform-origin: top center;
+  }
+
+  /* Optional: agar jarak antar kartu tetap */
+  .row.g-4 > .col-lg-4 {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .w-100 {
+    width: 172% !important;
+  }
+}
+footer {
+  background: #1a1a2e;
+  color: #6c757d;
+}

@@ -1,0 +1,80 @@
+{% extends "layout.html" %} {% block content %}
+<h2 class="fw-bold">Keranjang Belanja</h2>
+
+{% if cart %}
+<form action="{{ url_for('checkout') }}" method="POST">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Pilih</th>
+        <th>Produk</th>
+        <th>Harga</th>
+        <th>Jumlah</th>
+        <th>Subtotal</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart %}
+      <tr>
+        <td>
+          <input type="checkbox" name="selected_items" value="{{ item.id }}" onchange="updateTotal()" />
+        </td>
+        <td><img src="{{ item.image }}" style="height: 50px" /> {{ item.title }}</td>
+        <td>${{ item.price }}</td>
+        <td>
+          <a href="{{ url_for('decrease_cart', item_id=item.id) }}" class="btn btn-sm btn-outline-secondary">-</a>
+          {{ item.quantity }}
+          <a href="{{ url_for('increase_cart', item_id=item.id) }}" class="btn btn-sm btn-outline-secondary">+</a>
+        </td>
+        <td class="subtotal">${{ item.price * item.quantity }}</td>
+        <td>
+          <a href="{{ url_for('remove_from_cart', item_id=item.id) }}" class="btn btn-sm btn-danger">Hapus</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p class="text-end fw-bold">Total: $<span id="total">{{ total }}</span></p>
+  <button type="submit" class="btn btn-success">Checkout</button>
+</form>
+
+<script>
+  function updateTotal() {
+    let total = 0;
+    const rows = document.querySelectorAll("tbody tr");
+    rows.forEach((row) => {
+      const checkbox = row.querySelector('input[type="checkbox"]');
+      if (checkbox.checked) {
+        const subtotal = parseFloat(row.querySelector(".subtotal").textContent.replace("$", ""));
+        total += subtotal;
+      }
+    });
+    document.getElementById("total").textContent = total.toFixed(2);
+  }
+  function saveChecked() {
+    const checked = [];
+    document.querySelectorAll('input[name="selected_items"]:checked').forEach((cb) => checked.push(cb.value));
+    localStorage.setItem("checked_cart", JSON.stringify(checked));
+  }
+  function loadChecked() {
+    const checked = JSON.parse(localStorage.getItem("checked_cart") || "[]");
+    document.querySelectorAll('input[name="selected_items"]').forEach((cb) => {
+      if (checked.includes(cb.value)) {
+        cb.checked = true;
+      }
+    });
+    updateTotal();
+  }
+
+  document.querySelectorAll('input[name="selected_items"]').forEach((cb) => {
+    cb.addEventListener("change", saveChecked);
+  });
+
+  window.addEventListener("load", loadChecked);
+</script>
+
+{% else %}
+<p>Keranjang kosong.</p>
+{% endif %} {% endblock %}

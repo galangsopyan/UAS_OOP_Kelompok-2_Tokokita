@@ -1,0 +1,56 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container py-5">
+  <h2 class="fw-bold">Bantuan</h2>
+
+  <div class="accordion" id="faqAccordion">
+    <!-- FAQ 1 -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faqHeading1">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">Bagaimana cara memesan produk di Catalog?</button>
+      </h2>
+      <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Untuk memesan produk: <br />
+          1. Buka halaman <strong>Catalog</strong>. <br />
+          2. Pilih produk yang ingin dibeli. <br />
+          3. Klik tombol <strong>Tambah ke Keranjang</strong> pada produk tersebut. <br />
+          4. Produk akan masuk ke <strong>Keranjang Belanja</strong> dan bisa langsung di-checkout.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faqHeading2">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">Bagaimana cara menggunakan keranjang belanja?</button>
+      </h2>
+      <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Di <strong>Keranjang Belanja</strong>: <br />
+          - Centang produk yang ingin dibeli untuk menghitung total harga. <br />
+          - Gunakan tombol <strong>+</strong> atau <strong>-</strong> untuk menambah atau mengurangi jumlah produk. <br />
+          - Klik tombol <strong>Hapus</strong> jika ingin menghapus produk dari keranjang. <br />
+          - Setelah memilih semua produk, klik tombol <strong>Checkout</strong> untuk memproses pembelian.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faqHeading3">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">Bagaimana cara melihat detail produk?</button>
+      </h2>
+      <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Untuk melihat detail produk: <br />
+          - Di halaman <strong>Catalog</strong>, klik tombol <strong>Detail</strong> pada nama atau gambar produk. <br />
+          - Halaman detail menampilkan deskripsi lengkap, harga, gambar lebih besar, dan tombol <strong>Tambah ke Keranjang</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

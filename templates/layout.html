@@ -1,151 +1,108 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TokoKita | UAS OOP 2026</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
-        
-        /* Navbar Custom Styling */
-        .navbar {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 15px 0;
-            transition: all 0.3s ease;
-        }
-        .navbar-brand {
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: #4cc9f0 !important;
-            text-transform: uppercase;
-        }
-        .nav-link {
-            font-weight: 500;
-            color: rgba(255,255,255,0.8) !important;
-            margin: 0 10px;
-            transition: 0.3s;
-        }
-        .nav-link:hover {
-            color: #4cc9f0 !important;
-            transform: translateY(-2px);
-        }
-        .nav-link.active {
-            color: #fff !important;
-            border-bottom: 2px solid #4cc9f0;
-        }
-        .search-input {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            border-radius: 20px;
-        }
-        .search-input::placeholder { color: rgba(255,255,255,0.5); }
-        .search-input:focus {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            box-shadow: none;
-            border-color: #4cc9f0;
-        }
-        .btn-search {
-            border-radius: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-            background-color: #4cc9f0;
-            border: none;
-            font-weight: 600;
-        }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
 
-        /* Card Styling */
-        .card { border-radius: 15px; border: none; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        
-        footer { background: #1a1a2e; color: #6c757d; }
-    </style>
-</head>
-<body class="d-flex flex-column min-vh-100">
-
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="/">
-                <i class="fas fa-rocket me-2"></i>TokoKita
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
-                    </li>
-                    <li class="nav-item">
-                       <a class="nav-link" href="/dashboard"><i class="fas fa-chart-line me-1"></i> Dashboard</a>
-                    </li>
-                </ul>
-                <form class="d-flex ms-lg-3" action="/" method="GET">
-                    <div class="input-group">
-                        <input class="form-control search-input" type="search" name="q" placeholder="Cari barang..." aria-label="Search">
-                        <button class="btn btn-search" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </nav>
-
-    <main class="container py-5">
-        {% block content %}
-        <style>
-    /* Spinner Overlay */
-    #loader {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(255,255,255,0.8);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .loader-hidden { display: none !important; }
-</style>
-
-<div id="loader">
-    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-        <span class="visually-hidden">Loading...</span>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Top bar -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-end align-items-center py-1">
+        <a href="/about" class="btn-top me-2"><i class="fas fa-info-circle me-1"></i>About</a>
+        <a href="/dashboard" class="btn-top btn-outline-success"><i class="fas fa-chart-line me-1"></i>Dashboard</a>
+      </div>
     </div>
-</div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-lg sticky-top">
+      <div class="container d-flex align-items-center">
+        <!-- Brand -->
+        <a class="navbar-brand me-auto d-flex align-items-center" href="/">
+          <img src="{{ url_for('static', filename='images/tokokita.png') }}" alt="TokoKita" class="brand-logo me-2" />
+          TokoKita
+        </a>
+        <!-- Cart mobile -->
+        <a class="nav-link-cart position-relative d-lg-none me-2 order-1" href="/cart">
+          <i class="fas fa-shopping-cart"></i>
+          {% if session.cart %}
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ session.cart|length }}
+            <span class="visually-hidden">items in cart</span>
+          </span>
+          {% endif %}
+        </a>
 
-<script>
-    window.addEventListener("load", function() {
-        const loader = document.querySelector("#loader");
-        loader.classList.add("loader-hidden");
-    });
-    
-    // Spinner saat pindah link
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if(!link.hash) document.querySelector("#loader").classList.remove("loader-hidden");
-        });
-    });
-</script>
-        {% endblock %}
-    </main>
+        <!-- Toggler -->
+        <button class="navbar-toggler order-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapse Menu -->
+        <div class="collapse navbar-collapse order-3" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <!-- Home -->
+            <li class="nav-item">
+              <a class="nav-link {% if request.endpoint=='index' %}active{% endif %}" href="/"> <i class="fas fa-home me-1"></i> Home </a>
+            </li>
+
+            <!-- Catalog Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle {% if request.path.startswith('/catalog') %}active{% endif %} {% if request.args.get('category') %}active{% endif %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-bag-shopping me-1"></i> Catalog
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/catalog?category=men's clothing">Men's Clothing</a></li>
+                <li><a class="dropdown-item" href="/catalog?category=women's clothing">Women's Clothing</a></li>
+                <li><a class="dropdown-item" href="/catalog?category=electronics">Electronics</a></li>
+                <li><a class="dropdown-item" href="/catalog?category=jewelery">Jewelery</a></li>
+                <li><a class="dropdown-item" href="/catalog">Lihat Semua</a></li>
+              </ul>
+            </li>
+
+            <!-- FAQ -->
+            <li class="nav-item">
+              <a class="nav-link {% if request.endpoint=='faq' %}active{% endif %}" href="/faq"> <i class="fas fa-question-circle"></i> FAQ </a>
+            </li>
+
+            <!-- Search -->
+            <li class="nav-item ms-lg-3">
+              <form class="d-flex" action="/catalog" method="GET">
+                <div class="input-group">
+                  <input class="form-control search-input" type="search" name="q" placeholder="Cari barang..." aria-label="Search" />
+                  <button class="btn btn-search" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+              </form>
+            </li>
+
+            <!-- Cart desktop -->
+            <li class="nav-item d-none d-lg-block ms-3">
+              <a class="nav-link-cart position-relative {% if request.endpoint=='cart' %}active{% endif %}" href="/cart">
+                <i class="fas fa-shopping-cart me-1"></i>
+                {% if session.cart %}
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ session.cart|length }}
+                  <span class="visually-hidden">items in cart</span>
+                </span>
+                {% endif %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container py-5">{% block content %}{% endblock %}</main>
 
     <footer class="py-4 mt-auto border-top">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2026 Universitas Pelita Bangsa. Dibuat dengan <i class="fas fa-heart text-danger"></i> oleh Kelompok 2.</p>
-        </div>
+      <div class="container text-center">
+        <p class="mb-0">&copy; 2026 Universitas Pelita Bangsa. Dibuat dengan <i class="fas fa-heart text-danger"></i> oleh Kelompok 2.</p>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
